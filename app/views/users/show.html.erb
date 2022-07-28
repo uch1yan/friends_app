@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <h1>Welcome to <%= @user.name %>'s ページ</h1>
+
+  <p>投稿画像:</p>
+
+  <% if @user == current_user %>
+    <p><%= link_to '編集', edit_user_path(@user), class:"btn btn-info" %></p>
+  <% end %>
+
+ <p><%= link_to '新規投稿を作成', new_feed_path, class:"btn btn-info" %></p>
+</div>
