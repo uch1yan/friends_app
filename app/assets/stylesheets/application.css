@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+table {
+  display: inline;
+  text-align: center;
+}
+
+.wrapper {
+  text-align: center;
+}

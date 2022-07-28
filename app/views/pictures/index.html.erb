@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <p style="color: green"><%= notice %></p>
+  <h1>投稿一覧</h1>
+
+  <table>
+    <table-head>
+      <tr>
+        <th class="pt-3 pb-3 px-5">投稿者</th>
+        <th class="pt-3 pb-3 px-5">コメント</th>
+        <th class="pt-3 pb-3 px-5">画像</th>
+      </tr>
+    </table-head>
+
+    <table-body>
+      <% @pictures.each do |picture| %>
+      <tr>
+        <td class="pt-3 pb-3 px-5"><%= picture.user.name %></td>
+        <td class="pt-3 pb-3 px-5"><%= picture.content %></td>
+        <td class="pt-3 pb-3 px-5">><%= image_tag picture.image_url(:thumb) %></td>
+        <td><%= link_to '編集', edit_picture_path(picture) %></td>
+        <td><%= button_to '削除', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </table-body>
+  </table>
+
+  <div class="mt-5">
+    <button type="button" class="btn btn-link"><%= link_to '新規投稿ページへ', new_picture_path %></button>
+  </div>

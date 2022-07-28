@@ -1,0 +1,23 @@
+<div class ="wrapper">
+  <h1>確認画面</h1>
+  <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+
+    <p><strong>画像:</strong></p>
+    <p><%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+    <%= form.hidden_field :image_cache %>
+
+    <p>
+      <strong>コメント</strong>
+      <%= form.hidden_field :content %>
+      <%= @picture.content %>
+    </p>
+
+    <%= form.submit "投稿する",class:"btn btn-info mt-3 mb-3" %>
+  <% end %>
+
+  <%= form_with(model: @picture, url: new_picture_path, local: true, mothod:"get") do |form| %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit 'back', name: 'back' %>
+  <% end %>
+    <%= link_to '戻る', :back %>
+</div>
