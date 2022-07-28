@@ -34,7 +34,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rexml'
 gem  'faker'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
