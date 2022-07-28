@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-  # before_action :authenticate_user, only: [:edit, :update, :destroy ]
 
   def index
     @pictures = Picture.all
@@ -29,16 +28,6 @@ class PicturesController < ApplicationController
       render :new
     end
   end
-  #   respond_to do |format|
-  #     if @picture.save
-  #       format.html { redirect_to feed_url(@feed), notice: "picture was successfully created." }
-  #       format.json { render :show, status: :created, location: @feed }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @feed.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   def update
     @picture = Picture.find(params[:id])
@@ -48,16 +37,7 @@ class PicturesController < ApplicationController
       render :edit
     end
   end
-  #   respond_to do |format|
-  #     if @feed.update(feed_params)
-  #       format.html { redirect_to feed_url(@feed), notice: "picture was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @feed }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @feed.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+
   def confirm
     @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
@@ -71,11 +51,7 @@ class PicturesController < ApplicationController
       render :index
     end
   end
-  #   respond_to do |format|
-  #     format.html { redirect_to feeds_url, notice: "Feed was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
+
   private
 
   def picture_params
