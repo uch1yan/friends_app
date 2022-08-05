@@ -13,5 +13,7 @@
   </p>
 
   <p><%= link_to "投稿一覧に戻る", pictures_path %></p>
+  <% if @picture.user == current_user %>
   <p><%= link_to '編集する', edit_picture_path(@picture) %></p>
+  <% end %>
 </div>

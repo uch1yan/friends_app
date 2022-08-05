@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create]
+  skip_before_action :login_required, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user, only: [:show, :edit, :update ]
 
   def index
     @users = User.all
@@ -39,5 +40,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation, :image, :image_cache )
+  end
+
+  def authenticate_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:danger] = "アクセスする権限がありません"
+      redirect_to new_session_path
+    end
   end
 end

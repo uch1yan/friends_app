@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user, only: [ :edit, :update, :destroy ]
 
   def index
     @pictures = Picture.all
@@ -57,4 +58,10 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:image, :image_cache, :content)
   end
+
+  def authenticate_user
+    unless @picture.user == current_user
+      redirect_to pictures_path
+    end
+  end 
 end
